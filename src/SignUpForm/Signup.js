@@ -23,6 +23,9 @@ function Signup() {
     setUser((prevUser) => ({ ...prevUser, [name]: value }));
   };
 
+
+
+  //modal function, backend function
   const handleSubmit = async (e) => {
     e.preventDefault();
 
