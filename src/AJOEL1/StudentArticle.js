@@ -1,6 +1,6 @@
 // StudentArticle.js
 
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './StudentArticle.css'; // Import the CSS file
 
@@ -10,9 +10,6 @@ function ArticleList({ articles }) {
       {articles.map((article) => (
         <div key={article.id} className="article-container">
           <div className="article-box">
-            {/* Image Box */}
-            <img src={`C:\\Users\\jjabe\\Downloads\\create LOGO.jpg`} alt={`Article ${article.id}`} />
-
             {/* Article Title */}
             <p>{article.title}</p>
           </div>
@@ -29,6 +26,12 @@ function StudentArticle() {
     { id: 3, title: 'NSTP is a program designed to develop the youth’s physical, moral, spiritual, intellectual, and social well-being and promote defense preparedness and ethics of service while undergoing training in any of its three program components. Its various components are specially designed to enhance the youth’s active contribution to the general welfare.' },
     // Add more articles as needed
   ];
+
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredArticles = articles.filter((article) =>
+    article.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div>
@@ -51,13 +54,18 @@ function StudentArticle() {
         <h2>Articles</h2>
       </div>
 
-      {/* Header - Articles */}
-      <div className="add-article-container">
-        <button className="add-article-btn">Add Article</button>
+      {/* Search Bar */}
+      <div className="search-bar-container">
+        <input
+          type="text"
+          placeholder="Search articles..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
       </div>
 
       {/* List of Articles */}
-      <ArticleList articles={articles} />
+      <ArticleList articles={filteredArticles} />
     </div>
   );
 }

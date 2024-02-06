@@ -196,7 +196,7 @@ body {
 .article-box {
   border: 1px solid #ccc;
   padding: 10px;
-  width: 300px; /* Adjust the width as needed */
+  width: 1000px; /* Adjust the width as needed */
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -224,4 +224,9 @@ body {
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
+}
+
+/* Move the search bar 5 spaces to the right */
+.search-bar-container {
+  margin-left: 40px;
 }
